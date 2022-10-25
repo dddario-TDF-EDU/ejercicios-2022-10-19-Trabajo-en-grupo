@@ -8,7 +8,7 @@ import { TrabajoPractico } from "./classTabajoPractico";
      public constructor(pNombre: string) {
         this.nombre = pNombre;
         this.trabajoPracticos = [];
-        this.respuestas = [];
+        this.respuestas = [[]];
 
      } 
 
@@ -21,10 +21,10 @@ import { TrabajoPractico } from "./classTabajoPractico";
             this.trabajoPracticos.push(pTrabajoPractico);
             let posicionRespuestas: number = this.trabajoPracticos.length - 1;
             for(let i = 0; i < pRespuestas.length; i++) {
-                this.respuestas[posicionRespuestas].push(pRespuestas[i]);
+                this.respuestas[posicionRespuestas].push(pRespuestas[i]) ;
             }
             console.log("Trabajo y respuestas agregados");
-            console.log("La nota del trabajo fue: " + pTrabajoPractico.corregirTrabajoPractico(pRespuestas));
+            console.log("La nota del trabajo fue: " + pTrabajoPractico.corregirTrabajoPractico(pRespuestas) + " de " + pRespuestas.length);
             return true;
         }
      }

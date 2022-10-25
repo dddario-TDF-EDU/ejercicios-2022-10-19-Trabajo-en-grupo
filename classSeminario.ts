@@ -15,11 +15,14 @@ export class Seminario {
         let yaExiste: boolean = false;
         for (let index = 0; index < this.temasRequisitos.length; index++) {
             if(pRequisito.toUpperCase() === this.temasRequisitos[index].toUpperCase()) {
-                yaExiste = true;
+                yaExiste = false;
+                console.log("requisito repetido");
                 return yaExiste;
             }
         }
         this.temasRequisitos.push(pRequisito);
+        yaExiste = true;
+        console.log("requisito NO repetido");
         return yaExiste;
     }
 }

@@ -11,7 +11,7 @@ let ejercicioD: Ejercicio = new Ejercicio("¿Cuanto es 2 mod 2?","0",2);
 let ejercicioE: Ejercicio = new Ejercicio("Si tenemos el string '2',¿Cuanto es '2' + '2'?","22",2);
 let arrayEjercicios: Ejercicio[] = [ejercicioA, ejercicioB, ejercicioC, ejercicioD, ejercicioE];
 //instanciamos el Trabajo Practico y le agregamos los ejercicios.
-let trabajoPractico1: TrabajoPractico = new TrabajoPractico("Programacion",10);
+let trabajoPractico1: TrabajoPractico = new TrabajoPractico("Programacion", 5);
 console.log(trabajoPractico1.addEjercicio(ejercicioA));
 console.log(trabajoPractico1.addEjercicio(ejercicioB));
 console.log(trabajoPractico1.addEjercicio(ejercicioC));
@@ -27,5 +27,11 @@ console.log(estudianteA.realizarTabajoPractico(trabajoPractico1, respuestasExact
 console.log(estudianteA.realizarTabajoPractico(trabajoPractico1, respuestasExactas));
 //instanciamos seminario
 let seminarioA: Seminario = new Seminario("Tema Programacion");
+console.log(seminarioA.addRequisito("Aprobar todo"));
+    //compruebo si deteca que este repetido, pero la verdad no tiene mucho sentido como se implementa esto,
+    //no tiene metodos para agregar alumnos ni los agrega desde el constructor.
+console.log(seminarioA.addRequisito("Aprobar todo"));
+
+
 
 
