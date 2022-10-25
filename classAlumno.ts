@@ -1,25 +1,43 @@
 import { TrabajoPractico } from "./classTabajoPractico";
 
  export class Alumno {
-    private nomber: string;
+    private nombre: string;
     private trabajoPracticos: TrabajoPractico[];
-    private respuestas: string[];
+    private respuestas: string[][];
 
      public constructor(pNombre: string) {
-        this.nomber = pNombre; 
+        this.nombre = pNombre;
+        this.trabajoPracticos = [];
+        this.respuestas = [];
+
      } 
 
-     public realisarTabajoPractico(pTrabajoParactico: TrabajoPractico, pRespuestas: string[]): boolean {
-        for()
+     public realizarTabajoPractico(pTrabajoPractico: TrabajoPractico, pRespuestas: string[]): boolean {
+        let yaExiste: boolean = this.buscarTrabajoPractico(pTrabajoPractico) 
+        if(yaExiste === true) {
+            console.log("Trabajo Repetido");
+            return false;
+        } else {
+            this.trabajoPracticos.push(pTrabajoPractico);
+            let posicionRespuestas: number = this.trabajoPracticos.length - 1;
+            for(let i = 0; i < pRespuestas.length; i++) {
+                this.respuestas[posicionRespuestas].push(pRespuestas[i]);
+            }
+            console.log("Trabajo y respuestas agregados");
+            console.log("La nota del trabajo fue: " + pTrabajoPractico.corregirTrabajoPractico(pRespuestas));
+            return true;
+        }
      }
 
-    private buscar(pTrabajoParactico: TrabajoPractico): boolean {
+    private buscarTrabajoPractico(pTrabajoPractico: TrabajoPractico): boolean {
+        let yaExiste: boolean = false; 
         for (let i = 0; i < this.trabajoPracticos.length; i++) {
-            if (this.trabajoPracticos[i] === pTrabajoParactico) {
-                return true; 
+            if (this.trabajoPracticos[i] === pTrabajoPractico) {
+                yaExiste = true
+                return yaExiste; 
             }
         }
-        return false;
+        return yaExiste;
     }
 
  }
