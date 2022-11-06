@@ -21,5 +21,4 @@ export class TrabajoPracticoIntegrador extends TrabajoPractico {
         console.log("Lo solucionamos con console.log");
         return repetido;
     }
-
 }

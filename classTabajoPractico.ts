@@ -9,14 +9,14 @@ export class TrabajoPractico {
     this.tema = paramTema;
     this.puntajeDeAprobacion = paramPuntaje;
     this.ejercicios = [];
-  } 
+  }
 
   public addEjercicio(ejercicio: Ejercicio): boolean {
     let nuevoEjercicio: boolean = false;
-    for(let i = 0; i < this.ejercicios.length; i++) {
-        if(this.ejercicios[i] === ejercicio) {
-            return nuevoEjercicio;
-        }    
+    for (let i = 0; i < this.ejercicios.length; i++) {
+      if (this.ejercicios[i].getConsigna() === ejercicio.getConsigna()) {
+        return nuevoEjercicio;
+      }
     }
     this.ejercicios.push(ejercicio);
     nuevoEjercicio = true;
@@ -26,33 +26,32 @@ export class TrabajoPractico {
   public corregirTrabajoPractico(respuestas: string[]): number {
     let nota: number = 0;
     for (let i = 0; i < respuestas.length; i++) {
-        if (this.ejercicios[i].corregirEjercicio(respuestas[i]) === 1) {
-            nota++
-        }
+      if (this.ejercicios[i].corregirEjercicio(respuestas[i]) === 1) {
+        nota++;
+      }
     }
-    return nota
+    return nota;
 
   }
 
-  public estaAprobado(respuesta:string[]): boolean {
+  public estaAprobado(respuesta: string[]): boolean {
     let nota: number = this.corregirTrabajoPractico(respuesta);
     if (nota < this.puntajeDeAprobacion) {
-        return false;
+      return false;
     } else {
-        return true;
+      return true;
     }
   }
 
-  public getTema():string {
+  public getTema(): string {
     return this.tema;
   }
 
   public esDeTema(): string {
     return ("es el tema" + this.getTema());
   }
-  
-  public getEjercicios():Ejercicio[] {
-     return this.ejercicios;
-  }
 
+  public getEjercicios(): Ejercicio[] {
+    return this.ejercicios;
+  }
 } 
